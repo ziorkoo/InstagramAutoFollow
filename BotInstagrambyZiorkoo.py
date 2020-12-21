@@ -67,36 +67,25 @@ class InstaPy():
         sleep(rand)
         if follow == "follow":
             self.browser.get('https://www.instagram.com/explore/tags/' + hasztag )
-            rand = random.randint(2,5)
+            rand = random.randint(3,5)
             self.left = random.randint(1,3)
             self.left = str(self.left)
             self.downIndex = random.randint(1,3)
             self.downIndex = str(self.downIndex)
             self.photo = self.browser.find_element_by_xpath('//*[@id="react-root"]/section/main/article/div[1]/div/div/div['+ self.left + ']/div['+ self.downIndex +']/a/div')
             self.photo.click()
-            time.sleep(2)
-            self.click_follow()
-            time.sleep(2)
-
-        def n_photo(self):
-            time.sleep(3)
-            while(True):
-                while(True):
-                    if self.browser.find_element_by_xpath('//button[text()="Obserwowanie"]'):
-                        self.next_photo_button = self.browser.find_element_by_link_text('Dalej')
-                        self.next_photo_button()
-                        rand = random.randint(15,20)
-                        sleep(rand)
-
-        def click_follow(self):
             time.sleep(3)
             while(True):
                 while(True):
                     if self.browser.find_element_by_xpath('//button[text()="Obserwuj"]'):
                         button = self.browser.find_element_by_xpath('//button[text()="Obserwuj"]')
-                        button.click()
-                        self.n_photo()
+                        self.button.click()
+                    if self.browser.find_element_by_xpath('//button[text()="Obserwowanie"]'):
+                        self.next_photo_button = self.browser.find_element_by_link_text('Dalej')
+                        self.next_photo_button.click()
                         rand = random.randint(15,20)
                         sleep(rand)
+                        
+
 bot = InstaPy()
-bot.login()     
+bot.login()
